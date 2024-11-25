@@ -1,0 +1,205 @@
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/violet.css";
+@import "@radix-ui/colors/mauve.css";
+
+/* reset */
+input,
+textarea,
+button {
+  all: unset;
+  box-sizing: border-box;
+}
+
+.FormRoot {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 3rem;
+  padding-bottom: 3rem;
+}
+
+.FormRoot p {
+  color: #f26722;
+}
+
+.FormField {
+  display: grid;
+  margin-bottom: 10px;
+}
+
+.FormLabel {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 35px;
+  color: rgb(73, 73, 73);
+}
+
+.FormMessage {
+  font-size: 13px;
+  color: white;
+  opacity: 0.8;
+}
+
+.Input,
+.Textarea {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  color: rgb(73, 73, 73);
+  box-shadow: 0 0 0 .5px var(--black-a6);
+}
+
+.Input:hover,
+.Textarea:hover {
+  box-shadow: 0 0 0 1px black;
+}
+
+.Input:focus,
+.Textarea:focus {
+  box-shadow: 0 0 0 2px black;
+}
+
+.Input::selection,
+.Textarea::selection {
+  background-color: var(--black-a6);
+  color: rgb(73, 73, 73);
+}
+
+.Input {
+  padding: 0 10px;
+  height: 35px;
+  line-height: 1;
+}
+
+.Textarea {
+  resize: none;
+  padding: 10px;
+}
+
+.Button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  /* padding: 0 15px; */
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 600;
+  padding-block: 1.2rem;
+  color: var(--mauve-11);
+  cursor: pointer;
+  background-color: white;
+  box-shadow: 0 2px 10px var(--black-a4);
+}
+
+.Button:hover {
+  background-color: var(--mauve-3);
+}
+
+.Button:focus {
+  box-shadow: 0 0 0 2px black;
+}
+
+/* reset */
+button {
+  all: unset;
+}
+
+.SelectTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0 15px;
+  font-size: 13px;
+  line-height: 1;
+  height: 35px;
+  gap: 5px;
+  background-color: white;
+  color: var(--violet-11);
+  box-shadow: 0 2px 10px var(--black-a7);
+}
+.SelectTrigger:hover {
+  background-color: var(--mauve-3);
+}
+.SelectTrigger:focus {
+  box-shadow: 0 0 0 2px black;
+}
+.SelectTrigger[data-placeholder] {
+  color: var(--violet-9);
+}
+
+.SelectIcon {
+  color: Var(--violet-11);
+}
+
+.SelectContent {
+  overflow: hidden;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35),
+    0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+}
+
+.SelectViewport {
+  padding: 5px;
+}
+
+.SelectItem {
+  font-size: 13px;
+  line-height: 1;
+  color: var(--violet-11);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  padding: 0 35px 0 25px;
+  position: relative;
+  user-select: none;
+}
+.SelectItem[data-disabled] {
+  color: var(--mauve-8);
+  pointer-events: none;
+}
+.SelectItem[data-highlighted] {
+  outline: none;
+  background-color: var(--violet-9);
+  color: var(--violet-1);
+}
+
+.SelectLabel {
+  padding: 0 25px;
+  font-size: 12px;
+  line-height: 25px;
+  color: var(--mauve-11);
+}
+
+.SelectSeparator {
+  height: 1px;
+  background-color: var(--violet-6);
+  margin: 5px;
+}
+
+.SelectItemIndicator {
+  position: absolute;
+  left: 0;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SelectScrollButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  background-color: white;
+  color: var(--violet-11);
+  cursor: default;
+}
+
+.adminAuth {
+}
