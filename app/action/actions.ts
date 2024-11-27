@@ -143,7 +143,7 @@ export async function createAccommodation(formData: FormData) {
   });
 
   // Handle image upload
-  const imageFile = formData.get("image") as File;
+  const imageFiles = formData.getAll("images") as File[];
 
   const sanitizeFileName = (filename: string) =>
     filename
@@ -171,9 +171,20 @@ export async function createAccommodation(formData: FormData) {
     }
   };
 
-  const imageUrl = imageFile
-    ? await uploadImageToSupabase(imageFile)
-    : "https://picsum.photos/seed/picsum/200/300";
+  const uploadedImageUrls: string[] = [];
+  if (imageFiles.length > 0) {
+    for (const file of imageFiles) {
+      const imageUrl = await uploadImageToSupabase(file);
+      if (imageUrl) {
+        uploadedImageUrls.push(imageUrl); // Store the uploaded URL
+      } else {
+        console.error(`Failed to upload image: ${file.name}`);
+      }
+    }
+  } else {
+    // Provide a fallback if no files are uploaded
+    uploadedImageUrls.push("https://picsum.photos/seed/picsum/200/300");
+  }
 
   await prisma.accommodation.create({
     data: {
@@ -184,7 +195,7 @@ export async function createAccommodation(formData: FormData) {
       type: data.type,
       category: data.category,
       user: { connect: { id: userId } },
-      imageUrl,
+      imageUrls: uploadedImageUrls,
     },
   });
 
@@ -216,7 +227,7 @@ export async function createTourism(formData: FormData) {
   });
 
   // Handle image upload
-  const imageFile = formData.get("image") as File;
+  const imageFiles = formData.getAll("images") as File[];
 
   const sanitizeFileName = (filename: string) =>
     filename
@@ -244,10 +255,20 @@ export async function createTourism(formData: FormData) {
     }
   };
 
-  const imageUrl = imageFile
-    ? await uploadImageToSupabase(imageFile)
-    : "https://picsum.photos/seed/picsum/200/300";
-
+  const uploadedImageUrls: string[] = [];
+  if (imageFiles.length > 0) {
+    for (const file of imageFiles) {
+      const imageUrl = await uploadImageToSupabase(file);
+      if (imageUrl) {
+        uploadedImageUrls.push(imageUrl); // Store the uploaded URL
+      } else {
+        console.error(`Failed to upload image: ${file.name}`);
+      }
+    }
+  } else {
+    // Provide a fallback if no files are uploaded
+    uploadedImageUrls.push("https://picsum.photos/seed/picsum/200/300");
+  }
   await prisma.tourism.create({
     data: {
       title: data.title,
@@ -256,7 +277,7 @@ export async function createTourism(formData: FormData) {
       slug: data.slug,
       category: data.category,
       user: { connect: { id: userId } },
-      imageUrl,
+      imageUrls: uploadedImageUrls,
     },
   });
 

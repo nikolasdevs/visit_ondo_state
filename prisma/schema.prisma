@@ -38,7 +38,7 @@ model Accommodation {
   title       String
   address     String
   description String
-  imageUrl    String?
+  imageUrls   String[]
   slug        String            @unique
   type        AccommodationType
   category    CategoryType
@@ -57,7 +57,7 @@ model Tourism {
   title       String
   location    String
   description String
-  imageUrl    String?
+  imageUrls   String[]
   slug        String       @unique
   category    CategoryType
   user        User         @relation(fields: [userId], references: [id])

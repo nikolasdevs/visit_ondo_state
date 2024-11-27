@@ -32,4 +32,3 @@ const Hero = () => {
 };
 
 export default Hero;
-console.log("Hero component rendered");

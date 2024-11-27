@@ -9,7 +9,7 @@ interface Accommodation {
   id: string;
   title: string;
   description: string;
-  imageUrl: string | null;
+  imageUrls: string | null;
   type: string;
   slug: string;
 }
@@ -114,9 +114,10 @@ function AccommodationSection({
                 className="relative w-full h-48"
                 transition={{ duration: 0.3 }}
               >
-                {accommodation.imageUrl ? (
+                {accommodation.imageUrls &&
+                accommodation.imageUrls.length > 0 ? (
                   <Image
-                    src={accommodation.imageUrl}
+                    src={accommodation.imageUrls[0]}
                     alt={accommodation.title}
                     layout="fill"
                     objectFit="cover"

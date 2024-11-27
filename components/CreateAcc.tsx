@@ -91,8 +91,9 @@ const CreateAcc = () => {
         <input
           className="my-2"
           type="file"
-          name="image"
+          name="images"
           accept="image/*"
+          multiple
           required
         />
         <button type="submit" className="Button mt-4">

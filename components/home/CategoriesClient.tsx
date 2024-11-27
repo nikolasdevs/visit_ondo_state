@@ -2,8 +2,6 @@
 "use client";
 
 import { useState } from "react";
-import { EmblaOptionsType } from "embla-carousel";
-
 import "../embla/embla.css";
 import { NextButton, PrevButton, usePrevNextButtons } from "../embla/ArrowBtns";
 import useEmblaCarousel from "embla-carousel-react";
@@ -14,14 +12,14 @@ import Link from "next/link";
 interface Accommodation {
   id: string;
   title: string;
-  imageUrl: string | null;
+  imageUrls: string[] | null;
   category: CategoryType;
   slug: string;
 }
 interface Tourism {
   id: string;
   title: string;
-  imageUrl: string | null;
+  imageUrls: string[] | null;
   category: CategoryType;
   slug: string;
 }
@@ -88,9 +86,10 @@ export default function CategoriesClient({ data }: { data: Data }) {
                     className="flex flex-col gap-2"
                   >
                     <div className="embla__slide__image">
-                      {accommodation.imageUrl ? (
+                      {accommodation.imageUrls &&
+                      accommodation.imageUrls.length > 0 ? (
                         <Image
-                          src={accommodation.imageUrl}
+                          src={accommodation.imageUrls[1]}
                           alt={accommodation.title}
                           width={0}
                           height={0}
@@ -120,9 +119,9 @@ export default function CategoriesClient({ data }: { data: Data }) {
                     className=" flex flex-col gap-2"
                   >
                     <div className="embla__slide__image bg-red-200">
-                      {tourism.imageUrl ? (
+                      {tourism.imageUrls && tourism.imageUrls.length > 0 ? (
                         <Image
-                          src={tourism.imageUrl}
+                          src={tourism.imageUrls[1]}
                           alt={tourism.title}
                           width={0}
                           height={0}

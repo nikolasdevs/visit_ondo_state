@@ -1,4 +1,3 @@
-// Categories.tsx (Server Component)
 import prisma from "@/lib/db";
 import CategoriesClient from "./CategoriesClient";
 

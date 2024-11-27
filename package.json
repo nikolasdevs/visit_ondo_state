@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^3.2.1",
+    "@emotion/react": "^11.13.5",
     "@prisma/client": "^5.22.0",
+    "@radix-ui/react-collection": "^1.1.0",
+    "@radix-ui/react-context": "^1.1.1",
     "@radix-ui/react-form": "^0.1.0",
     "@radix-ui/react-navigation-menu": "^1.2.1",
     "@radix-ui/react-select": "^2.1.2",
@@ -18,7 +22,10 @@
     "@supabase/supabase-js": "^2.46.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "embla-carousel": "^8.5.1",
+    "embla-carousel-autoplay": "^8.5.1",
     "embla-carousel-react": "^8.4.0",
+    "embla-carousel-reactive-utils": "^8.5.1",
     "framer-motion": "^12.0.0-alpha.1",
     "lucide-react": "^0.460.0",
     "next": "15.0.3",

@@ -84,9 +84,10 @@ const CreateTour = () => {
         <input
           className="my-2"
           type="file"
-          name="image"
+          name="images"
           accept="image/*"
           required
+          multiple
         />
         <button type="submit" className="Button mt-4">
           CREATE
