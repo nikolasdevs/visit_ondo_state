@@ -13,6 +13,7 @@ import {
   PrevButton,
   usePrevNextButtons,
 } from "@/components/embla/ArrowBtns";
+import { Pause, Play } from "lucide-react";
 
 type PropType = {
   // slides: number[];
@@ -83,7 +84,7 @@ const HotelCarouselClient: React.FC<PropType> = (props) => {
         </div>
 
         <button className="embla__play" onClick={toggleAutoplay} type="button">
-          {autoplayIsPlaying ? "Stop" : "Start"}
+          {autoplayIsPlaying ? <Pause /> : <Play color="white" />}
         </button>
       </div>
     </div>

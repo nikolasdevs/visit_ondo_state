@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { EmblaCarouselType } from "embla-carousel";
-import { AutoplayType } from "embla-carousel-autoplay";
+//import { AutoplayType } from "embla-carousel-autoplay";
 
 type UseAutoplayType = {
   autoplayIsPlaying: boolean;
@@ -13,11 +13,11 @@ export const useAutoplay = (
 ): UseAutoplayType => {
   const [autoplayIsPlaying, setAutoplayIsPlaying] = useState(false);
 
-  const getAutoplayPlugin = useCallback((): AutoplayType | undefined => {
-    if (!emblaApi) return undefined;
-    const plugins = emblaApi.plugins() as Record<string, unknown>;
-    return plugins.autoplay as AutoplayType | undefined;
-  }, [emblaApi]);
+  // const getAutoplayPlugin = useCallback((): AutoplayType | undefined => {
+  //   if (!emblaApi) return undefined;
+  //   const plugins = emblaApi.plugins() as Record<string, unknown>;
+  //   return plugins.autoplay as AutoplayType | undefined;
+  // }, [emblaApi]);
 
   const onAutoplayButtonClick = useCallback(
     (callback: () => void) => {
@@ -36,34 +36,46 @@ export const useAutoplay = (
   );
 
   const toggleAutoplay = useCallback(() => {
-    const autoplay = getAutoplayPlugin();
+    const autoplay = emblaApi?.plugins()?.autoplay;
     if (!autoplay) return;
 
-    if (autoplay.isPlaying()) {
-      autoplay.stop();
-    } else {
-      autoplay.play();
-    }
-  }, [getAutoplayPlugin]);
+    const playOrStop = autoplay.isPlaying() ? autoplay.stop : autoplay.play
+    playOrStop()
+  }, [emblaApi])
+
+
+  //   if (autoplay.isPlaying()) {
+  //     autoplay.stop();
+  //   } else {
+  //     autoplay.play();
+  //   }
+  // }, [getAutoplayPlugin]);
 
   useEffect(() => {
-    const autoplay = getAutoplayPlugin();
+    const autoplay = emblaApi?.plugins()?.autoplay;
     if (!autoplay) return;
 
-    const updateAutoplayState = () =>
-      setAutoplayIsPlaying(autoplay.isPlaying());
+     setAutoplayIsPlaying(autoplay.isPlaying())
+    emblaApi
+      .on('autoplay:play', () => setAutoplayIsPlaying(true))
+      .on('autoplay:stop', () => setAutoplayIsPlaying(false))
+      .on('reInit', () => setAutoplayIsPlaying(autoplay.isPlaying()))
+  }, [emblaApi])
 
-    setAutoplayIsPlaying(autoplay.isPlaying());
-    emblaApi?.on("reInit", updateAutoplayState);
+  //   const updateAutoplayState = () =>
+  //     setAutoplayIsPlaying(autoplay.isPlaying());
 
-    return () => {
-      emblaApi?.off("reInit", updateAutoplayState);
-    };
-  }, [emblaApi, getAutoplayPlugin]);
+  //   setAutoplayIsPlaying(autoplay.isPlaying());
+  //   emblaApi?.on("reInit", updateAutoplayState);
+
+  //   return () => {
+  //     emblaApi?.off("reInit", updateAutoplayState);
+  //   };
+  // }, [emblaApi, getAutoplayPlugin]);
 
   return {
     autoplayIsPlaying,
     toggleAutoplay,
-    onAutoplayButtonClick
+    onAutoplayButtonClick,
   };
 };
