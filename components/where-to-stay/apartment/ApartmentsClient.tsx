@@ -18,27 +18,30 @@ interface Accommodation {
 }
 
 interface Data {
-  hotels: Accommodation[];
+  apartments: Accommodation[];
 }
 
-export default function AllHotelsClient({ data }: { data: Data }) {
-  const [hotels, setHotels] = useState<Accommodation[]>([]);
+export default function AllApartmentsClient({ data }: { data: Data }) {
+  const [apartments, setApartments] = useState<Accommodation[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const lastItemIndex = currentPage * itemsPerPage;
   const firstItemIndex = lastItemIndex - itemsPerPage;
-  const currentItems = hotels.slice(firstItemIndex, lastItemIndex);
+  const currentItems = apartments.slice(firstItemIndex, lastItemIndex);
   return (
     <>
       <div className="flex flex-col max-w-7xl mx-auto px-8 gap-8 w-full mt-16">
         <div className="flex flex-col gap-8  w-full">
           <div className="  grid gap-8 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 justify-center">
-            {data.hotels.map((hotel) => (
+            {data.apartments.map((apartment) => (
               <div
-                key={hotel.id}
+                key={apartment.id}
                 className="max-w-sm dark:bg-gray-800 dark:border-gray-700 overflow-hidden h-auto"
               >
-                <Link href={`/where-to-stay/hotels/${hotel.slug}`} className="">
+                <Link
+                  href={`/where-to-stay/apartments/${apartment.slug}`}
+                  className=""
+                >
                   <div className="w-full h-64 bg-green-400 relative overflow-hidden">
                     {" "}
                     {/* Added relative and overflow-hidden */}
@@ -55,10 +58,11 @@ export default function AllHotelsClient({ data }: { data: Data }) {
                         whileHover={{ scale: [null, 1.1] }}
                         transition={{ duration: 0.3 }}
                       >
-                        {hotel.imageUrls && hotel.imageUrls.length > 0 ? (
+                        {apartment.imageUrls &&
+                        apartment.imageUrls.length > 0 ? (
                           <Image
-                            src={hotel.imageUrls[0]}
-                            alt={hotel.title}
+                            src={apartment.imageUrls[0]}
+                            alt={apartment.title}
                             layout="fill"
                             objectFit="cover" // This ensures the image covers the entire area
                             className="absolute inset-0" // Makes the image fill the container
@@ -75,18 +79,18 @@ export default function AllHotelsClient({ data }: { data: Data }) {
                 </Link>{" "}
                 <div className="pt-2 flex flex-col justify-between h-32 gap-2">
                   <div className="flex flex-col gap-2 ">
-                    <Link href={`/where-to-stay/hotels/${hotel.slug}`}>
+                    <Link href={`/where-to-stay/apartments/${apartment.slug}`}>
                       <h5 className=" text-neutral-700 font-bold text-xl dark:text-white">
-                        {hotel.title}
+                        {apartment.title}
                       </h5>
                     </Link>
 
                     <p className="text-base text-neutral-500 dark:text-gray-400 truncates">
-                      {hotel.description}
+                      {apartment.description}
                     </p>
                   </div>
                   <Link
-                    href={`/where-to-stay/hotels/${hotel.slug}`}
+                    href={`/where-to-stay/apartments/${apartment.slug}`}
                     className="inline-flex items-center text-sm font-medium text-primary"
                   >
                     More
@@ -98,7 +102,7 @@ export default function AllHotelsClient({ data }: { data: Data }) {
           </div>
           <div className=" sticky bottom-0 bg-primary-foreground py-4 border-t-2 border-y-white">
             <PaginationSection
-              totalItems={hotels.length}
+              totalItems={apartments.length}
               itemsPerPage={itemsPerPage}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}

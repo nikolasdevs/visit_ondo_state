@@ -1,5 +1,4 @@
 import prisma from "@/lib/db";
-import Link from "next/link";
 import AllHotelsClient from "./HotelsClient";
 
 async function FetchAllHotelServer() {
