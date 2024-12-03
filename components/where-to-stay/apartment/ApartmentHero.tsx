@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import Img1 from "@/public/Img3.jpg";
 import Img2 from "@/public/Img4.jpg";
 import Img3 from "@/public/nature-8.jpg";
@@ -15,7 +14,11 @@ import useEmblaCarousel from "embla-carousel-react";
 import "../../embla/emblaHotel.css";
 import { ArrowRight } from "lucide-react";
 import { DotButton, useDotButton } from "@/components/embla/DotBtn";
-import { NextButton, PrevButton, usePrevNextButtons } from "@/components/embla/ArrowBtns";
+import {
+  NextButton,
+  PrevButton,
+  usePrevNextButtons,
+} from "@/components/embla/ArrowBtns";
 
 interface HotelSlides {
   id: number;
@@ -76,7 +79,7 @@ const hotelslides: HotelSlides[] = [
   },
 ];
 
-const HotelsHero: React.FC<HotelSlides> = (props) => {
+const ApartmentHero: React.FC<HotelSlides> = (props) => {
   const [emblaRef, emblaApi] = useEmblaCarousel();
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -159,4 +162,4 @@ const HotelsHero: React.FC<HotelSlides> = (props) => {
   );
 };
 
-export default HotelsHero;
+export default ApartmentHero;

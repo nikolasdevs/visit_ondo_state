@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import Img1 from "@/public/Img3.jpg";
 import Img2 from "@/public/Img4.jpg";
 import Img3 from "@/public/nature-8.jpg";
@@ -76,7 +75,7 @@ const hotelslides: HotelSlides[] = [
   },
 ];
 
-const HotelsHero: React.FC<HotelSlides> = (props) => {
+const HotelsHero: React.FC<HotelSlides> = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel();
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =

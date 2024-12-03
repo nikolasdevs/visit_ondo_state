@@ -353,20 +353,20 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
+    --background: 204 86% 14%;
+    --foreground: 201 61% 94%;
     --card: 0 0% 60%;
     --card-foreground: 224 71.4% 4.1%;
     --popover: 0 0% 50%;
     --popover-foreground: 0 0% 15%;
-    --primary: 20 89% 54%;
+    --primary: 203 64% 60%;
     --primary-foreground: 20 90% 96%;
     --secondary: 220 14.3% 95.9%;
     --secondary-foreground: 220.9 39.3% 11%;
     --muted: 220 14.3% 95.9%;
     --muted-foreground: 220 8.9% 46.1%;
-    --accent: 39 98% 49%;
-    --accent-foreground: 20 89% 54%;
+    --accent: 36 86% 50%;
+    --accent-foreground: 36 100% 45%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 20% 98%;
     --border: 220 13% 91%;
@@ -437,10 +437,10 @@
 }
 
 .truncates {
- display: -webkit-box;
+  display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; 
-  overflow: hidden; 
+  -webkit-line-clamp: 2;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -555,7 +555,14 @@
 }
 
 .bgGradient {
-  @apply bg-gradient-to-b from-[#FEF2EC] via-5% to-[#fbceb7] to-95%;
+  /* @apply bg-gradient-to-b from-[#FEF2EC] via-5% to-[#fbceb7] to-95%; */
+
+  background: rgb(0, 50, 80);
+  background: linear-gradient(
+    274deg,
+    rgba(0, 50, 80, 1) 0%,
+    rgba(89, 169, 218, 1) 60%
+  );
 }
 
 .months-container {

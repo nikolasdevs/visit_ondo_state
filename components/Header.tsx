@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import logo from "@/public/ondoStateLogo2.png";
+import logo from "@/public/visitLagosLogo.svg";
 import hotel from "@/public/hotel1.jpg";
 import { ArrowLeft, ArrowRight, Menu, X } from "lucide-react";
 
@@ -9,8 +9,14 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 // import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@radix-ui/react-navigation-menu";
 import { Button } from "@radix-ui/themes";
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "./ui/navigation-menu";
-
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "./ui/navigation-menu";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -41,16 +47,18 @@ export function Header() {
 
   return (
     <>
-      <nav className="lg:w-full  fixed top-0 left-0 lg:right-0  z-[10000000] bg-primary-foreground/75 ">
-        <div className="flex max-w-7xl  relative py-4 mx-auto justify-between px-8">
+      <nav className="lg:w-full  fixed top-0 left-0 lg:right-0  z-[10000000] bg-background/80 ">
+        <div className="flex max-w-7xl  relative py-4 mx-auto items-center justify-between px-8">
           <Link href="/" className="flex items-center  z-[10000]">
-            <Image src={logo} alt="Company Logo" width={64} height={64} />
+            <Image src={logo} alt="Company Logo" width={48} height={48} />
           </Link>
 
           <NavigationMenu className="hidden lg:block ">
             <NavigationMenuList>
               <NavigationMenuItem className="flex ">
-                <NavigationMenuTrigger> Things To Do</NavigationMenuTrigger>
+                <NavigationMenuTrigger>
+                  <Link href="/things-to-do">Things To Do</Link>
+                </NavigationMenuTrigger>
                 <NavigationMenuContent className="flex px-8 w-full justify-between h-[400px]">
                   <div className="flex flex-col gap-1 p- text-4xl font-bold w-full ">
                     <Link
@@ -125,10 +133,10 @@ export function Header() {
                   <Link href="/where-to-stay">Where To Stay</Link>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="flex px-8 w-full justify-between">
-                  <div className="flex flex-col gap-1 p- text-4xl font-bold w-full ">
+                  <div className="flex flex-col gap-1 text-4xl font-bold w-full text-foreground">
                     <Link
                       href="/where-to-stay/hotels"
-                      className="hover:text-accent transition"
+                      className="hover:text-accent  transition"
                     >
                       Hotel
                     </Link>

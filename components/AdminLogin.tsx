@@ -2,13 +2,13 @@ import * as Form from "@radix-ui/react-form";
 
 import "./styles.css";
 import React from "react";
-import { login } from "@/app/action/actions";
+import { login } from "@/app/actions/auth-actions";
 import Link from "next/link";
 
 const AdminLogin = () => {
   return (
     <div className="adminAuth flex justify-center relative top-48 w-full gap-10">
-      <Form.Root className="FormRoot w-1/4">
+      <Form.Root className="FormRoot w-1/4 min-w-[400px]">
         <p className="text-center font-bold text-xl mb-6">Login</p>
 
         <Form.Field className="FormField" name="email">

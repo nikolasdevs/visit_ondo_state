@@ -7,9 +7,9 @@ async function FetchAllAccommodationServer() {
       type: "HOTEL",
     },
   });
-  const motels = await prisma.accommodation.findMany({
+  const airbnb = await prisma.accommodation.findMany({
     where: {
-      type: "MOTEL",
+      type: "AIRBNB",
     },
   });
   const apartments = await prisma.accommodation.findMany({
@@ -17,8 +17,13 @@ async function FetchAllAccommodationServer() {
       type: "APARTMENT",
     },
   });
+  const resorts = await prisma.accommodation.findMany({
+    where: {
+      type: "RESORT",
+    },
+  });
 
-  return { hotels, motels, apartments };
+  return { hotels, airbnb, apartments, resorts };
 }
 
 export default async function AllAccommodationServer() {

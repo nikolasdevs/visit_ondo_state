@@ -15,45 +15,33 @@ datasource db {
 }
 
 model User {
-  id             String          @id @default(uuid())
-  name           String
-  email          String          @unique
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
-  accommodations Accommodation[]
-  tourism        Tourism[]
-  Shopping       Shopping[]
-  Nightlife      Nightlife[]
-  Food_Drink     Food_Drink[]
-}
-
-model Category {
-  id             String          @id @default(uuid())
-  name           String          @unique
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
-  accommodations Accommodation[]
-  tourisms       Tourism[]
-  Shopping       Shopping[]
-  Nightlife      Nightlife[]
-  Food_Drink     Food_Drink[]
+  id            String          @id @default(uuid())
+  name          String
+  email         String          @unique
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  Accommodation Accommodation[]
+  Tourism       Tourism[]
+  Shopping      Shopping[]
+  Nightlife     Nightlife[]
+  Food_Drink    Food_Drink[]
+  Event         Event[]
 }
 
 model Accommodation {
-  id          String            @id @default(uuid())
+  id          String             @id @default(uuid())
   title       String
   address     String
-  local_govt  String
+  localGovt   String
   description String
   imageUrls   String[]
-  slug        String            @unique
-  type        AccommodationType
+  slug        String             @unique
+  type        AccommodationType?
   category    CategoryType
-  user        User              @relation(fields: [userId], references: [id])
+  user        User               @relation(fields: [userId], references: [id])
   userId      String
-  createdAt   DateTime          @default(now())
-  updatedAt   DateTime          @updatedAt
-  Category    Category?         @relation(fields: [categoryId], references: [id])
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
   categoryId  String?
 
   @@unique([id, slug])
@@ -63,7 +51,7 @@ model Tourism {
   id          String       @id @default(uuid())
   title       String
   address     String
-  local_govt  String
+  localGovt   String
   description String
   imageUrls   String[]
   slug        String       @unique
@@ -72,7 +60,6 @@ model Tourism {
   userId      String
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
-  Category    Category?    @relation(fields: [categoryId], references: [id])
   categoryId  String?
 
   @@unique([id, slug])
@@ -82,7 +69,7 @@ model Shopping {
   id          String       @id @default(uuid())
   title       String
   address     String
-  local_govt  String
+  localGovt   String
   description String
   imageUrls   String[]
   slug        String       @unique
@@ -92,7 +79,6 @@ model Shopping {
   userId      String
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
-  Category    Category?    @relation(fields: [categoryId], references: [id])
   categoryId  String?
 
   @@unique([id, slug])
@@ -102,7 +88,7 @@ model Nightlife {
   id          String        @id @default(uuid())
   title       String
   address     String
-  local_govt  String
+  localGovt   String
   description String
   imageUrls   String[]
   slug        String        @unique
@@ -112,7 +98,25 @@ model Nightlife {
   userId      String
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
-  Category    Category?     @relation(fields: [categoryId], references: [id])
+  categoryId  String?
+
+  @@unique([id, slug])
+}
+
+model Event {
+  id          String       @id @default(uuid())
+  title       String
+  address     String
+  localGovt   String
+  description String
+  date        DateTime
+  imageUrls   String[]
+  slug        String       @unique
+  category    CategoryType
+  user        User         @relation(fields: [userId], references: [id])
+  userId      String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
   categoryId  String?
 
   @@unique([id, slug])
@@ -122,7 +126,7 @@ model Food_Drink {
   id          String       @id @default(uuid())
   title       String
   address     String
-  local_govt  String
+  localGovt   String
   description String
   imageUrls   String[]
   slug        String       @unique
@@ -131,7 +135,6 @@ model Food_Drink {
   userId      String
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
-  Category    Category?    @relation(fields: [categoryId], references: [id])
   categoryId  String?
 
   @@unique([id, slug])
@@ -157,8 +160,9 @@ enum NightlifeType {
 
 enum CategoryType {
   ACCOMMODATION
-  TOURISM
-  SHOPPING
+  EVENT
+  FOOD_DRINK
   NIGHTLIFE
-  FOOD_DRINKS
+  SHOPPING
+  TOURISM
 }

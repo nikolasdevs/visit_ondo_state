@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+
 import Link from "next/link";
-import { motion } from "framer-motion";
+
 import Img1 from "@/public/Img3.jpg";
 import Img2 from "@/public/Img4.jpg";
 import Img3 from "@/public/nature-8.jpg";
@@ -12,10 +12,14 @@ import Img6 from "@/public/nature-7.jpg";
 import { StaticImageData } from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 
-import "../../embla/emblaResort.css";
+import "../../embla/emblaHotel.css";
 import { ArrowRight } from "lucide-react";
 import { DotButton, useDotButton } from "@/components/embla/DotBtn";
-import { NextButton, PrevButton, usePrevNextButtons } from "@/components/embla/ArrowBtns";
+import {
+  NextButton,
+  PrevButton,
+  usePrevNextButtons,
+} from "@/components/embla/ArrowBtns";
 
 interface ResortSlides {
   id: number;
@@ -76,7 +80,7 @@ const resortslides: ResortSlides[] = [
   },
 ];
 
-const ResortsHero: React.FC<ResortSlides> = (props) => {
+const ResortsHero: React.FC<ResortSlides> = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel();
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =

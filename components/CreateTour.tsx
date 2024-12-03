@@ -1,13 +1,9 @@
-import { createTourism } from "@/app/action/actions";
-import React, { useState } from "react";
-import { Input } from "./ui/input";
+import React from "react";
 import * as Form from "@radix-ui/react-form";
 import "./styles.css";
-import * as Select from "@radix-ui/react-select";
-import classnames from "classnames";
-import { ChevronUpIcon } from "lucide-react";
+import { createTourism } from "@/app/actions/createTour-actions";
 
-const CreateTour = () => {
+const CreateWhatToDo = () => {
   return (
     <div className=" w-full flex flex-col items-center justify-center">
       <div className="my-8 font-bold text-xl">Create New Tourism</div>
@@ -33,7 +29,8 @@ const CreateTour = () => {
             <input placeholder="Enter Title" className="Input" />
           </Form.Control>
         </Form.Field>
-        <Form.Field className="FormField" name="location">
+
+        <Form.Field className="FormField" name="address">
           <div
             style={{
               display: "flex",
@@ -42,14 +39,33 @@ const CreateTour = () => {
             }}
           >
             {" "}
-            <Form.Label className="FormLabel"> Location</Form.Label>
+            <Form.Label className="FormLabel"> Address</Form.Label>
             <Form.Message className="FormMessage" match="valueMissing">
-              Please enter location
+              Please enter address
+            </Form.Message>
+          </div>
+          <Form.Control asChild>
+            <input placeholder="Enter Address" className="Input" />
+          </Form.Control>
+        </Form.Field>
+
+        <Form.Field className="FormField" name="localGovt">
+          <div
+            style={{
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+            }}
+          >
+            {" "}
+            <Form.Label className="FormLabel"> Local Govt</Form.Label>
+            <Form.Message className="FormMessage" match="valueMissing">
+              Please enter Local Govt
             </Form.Message>
           </div>
 
           <Form.Control asChild>
-            <input placeholder="Enter Location" className="Input" />
+            <input placeholder="Enter Local Govt" className="Input" />
           </Form.Control>
         </Form.Field>
         <Form.Field className="FormField" name="description">
@@ -73,7 +89,7 @@ const CreateTour = () => {
         </Form.Field>
         <div className="flex w-full justify-center gap-4 my-2">
           <select name="category" className="border p-2 w-full">
-            <option value="ECONOMY">Select Category</option>
+            <option value="">Select Category</option>
             <option value="ACCOMMODATION">Accommodation</option>
             <option value="TOURISM">Tourism</option>
             <option value="NIGHTLIFE">Nightlife</option>
@@ -97,4 +113,4 @@ const CreateTour = () => {
   );
 };
 
-export default CreateTour;
+export default CreateWhatToDo;

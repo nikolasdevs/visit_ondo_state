@@ -18,7 +18,7 @@ export default async function PrivatePage() {
           <p>Hello {data.user.email}</p>
           <SignOutButton />
         </div>
-        <CreateTour   supabase={supabase} user={data.user} redirect={redirect} />
+        <CreateTour supabase={supabase} user={data.user} redirect={redirect} />
       </div>{" "}
     </>
   );

@@ -16,14 +16,16 @@ interface Accommodation {
 
 interface Data {
   hotels: Accommodation[];
-  motels: Accommodation[];
+  airbnb: Accommodation[];
   apartments: Accommodation[];
+  resorts: Accommodation[];
 }
 
 export default function CategoriesClient({ data }: { data: Data }) {
   const [randomHotels, setRandomHotels] = useState<Accommodation[]>([]);
-  const [randomMotels, setRandomMotels] = useState<Accommodation[]>([]);
+  const [randomAirbnb, setRandomAirbnb] = useState<Accommodation[]>([]);
   const [randomApartments, setRandomApartments] = useState<Accommodation[]>([]);
+  const [randomResorts, setRandomResorts] = useState<Accommodation[]>([]);
 
   // Utility function to shuffle and slice
   const shuffleAndSlice = (array: Accommodation[], count: number) => {
@@ -32,31 +34,35 @@ export default function CategoriesClient({ data }: { data: Data }) {
 
   useEffect(() => {
     setRandomHotels(shuffleAndSlice(data.hotels, 4));
-    setRandomMotels(shuffleAndSlice(data.motels, 4));
+    setRandomAirbnb(shuffleAndSlice(data.airbnb, 4));
     setRandomApartments(shuffleAndSlice(data.apartments, 4));
+    setRandomResorts(shuffleAndSlice(data.resorts, 4));
   }, [data]);
 
   return (
     <div className="grid items-center justify-items-center min-h-screen p-8 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      {/* Hotels */}
       <AccommodationSection
         title="Hotels"
         accommodations={randomHotels}
         moreLink="/where-to-stay/hotels"
       />
 
-      {/* Motels */}
       <AccommodationSection
-        title="Motels"
-        accommodations={randomMotels}
-        moreLink="/where-to-stay/motels"
+        title="Airbnb"
+        accommodations={randomAirbnb}
+        moreLink="/where-to-stay/airbnb"
       />
 
-      {/* Apartments */}
       <AccommodationSection
         title="Apartments"
         accommodations={randomApartments}
         moreLink="/where-to-stay/apartments"
+      />
+
+      <AccommodationSection
+        title="Resorts"
+        accommodations={randomResorts}
+        moreLink="/where-to-stay/resorts"
       />
     </div>
   );

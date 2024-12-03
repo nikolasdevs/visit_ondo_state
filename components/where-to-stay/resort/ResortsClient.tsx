@@ -22,12 +22,12 @@ interface Data {
 }
 
 export default function AllResortsClient({ data }: { data: Data }) {
-  const [resorts, setResorts] = useState<Accommodation[]>([]);
+  const [resorts] = useState<Accommodation[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(8);
-  const lastItemIndex = currentPage * itemsPerPage;
-  const firstItemIndex = lastItemIndex - itemsPerPage;
-  const currentItems = resorts.slice(firstItemIndex, lastItemIndex);
+  const [itemsPerPage] = useState(8);
+  //const lastItemIndex = currentPage * itemsPerPage;
+  // const firstItemIndex = lastItemIndex - itemsPerPage;
+  //  const currentItems = resorts.slice(firstItemIndex, lastItemIndex);
   return (
     <>
       <div className="flex flex-col max-w-7xl mx-auto px-8 gap-8 w-full mt-16">

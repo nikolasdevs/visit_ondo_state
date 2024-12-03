@@ -2,26 +2,23 @@ import * as Form from "@radix-ui/react-form";
 
 import "./styles.css";
 import React from "react";
-import { signup } from "@/app/action/actions";
+import { signup } from "@/app/actions/auth-actions";
 import Link from "next/link";
 
 const AdminRegister = () => {
   return (
     <div className="adminAuth flex justify-center top-48 relative w-full gap-10">
-      <Form.Root className="FormRoot w-1/4">
+      <Form.Root className="FormRoot w-1/4 min-w-[400px]">
         <p className="text-center font-bold text-xl mb-6">Register</p>
 
-        <Form.Field className="FormField" name="email">
-          <Form.Label className="FormLabel">Email</Form.Label>
+        <Form.Field className="FormField" name="name">
+          <Form.Label className="FormLabel">Name</Form.Label>
           <Form.Message className="FormMessage" match="valueMissing">
-            Please enter your email
-          </Form.Message>
-          <Form.Message className="FormMessage" match="typeMismatch">
-            Please provide a valid email
+            Please enter your name
           </Form.Message>
 
           <Form.Control asChild>
-            <input className="Input" type="email" required />
+            <input className="Input" required />
           </Form.Control>
         </Form.Field>
 
