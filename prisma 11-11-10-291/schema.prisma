@@ -1,0 +1,183 @@
+// // This is your Prisma schema file,
+// // learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider  = "postgresql"
+//   url       = env("DATABASE_URL")
+//   directUrl = env("DIRECT_URL")
+// }
+
+// model User {
+//   id            String          @id @default(uuid())
+//   name          String
+//   email         String          @unique
+//   createdAt     DateTime        @default(now())
+//   updatedAt     DateTime        @updatedAt
+//   Accommodation Accommodation[]
+//   Tourism       Tourism[]
+//   Shopping      Shopping[]
+//   Nightlife     Nightlife[]
+//   Food_Drink    Food_Drink[]
+//   Event         Event[]
+// }
+
+// model Accommodation {
+//   id          String             @id @default(uuid())
+//   title       String
+//   address     String
+//   localGovt   String
+//   description String
+//   imageUrls   String[]
+//   slug        String             @unique
+//   type        AccommodationType?
+//   category    CategoryType
+//   user        User               @relation(fields: [userId], references: [id])
+//   userId      String
+//   createdAt   DateTime           @default(now())
+//   updatedAt   DateTime           @updatedAt
+//   categoryId  String?
+
+//   @@unique([id, slug])
+// }
+
+// model Tourism {
+//   id          String       @id @default(uuid())
+//   title       String
+//   address     String
+//   localGovt   String
+//   description String
+//   imageUrls   String[]
+//   slug        String       @unique
+//   category    CategoryType
+//   user        User         @relation(fields: [userId], references: [id])
+//   userId      String
+//   createdAt   DateTime     @default(now())
+//   updatedAt   DateTime     @updatedAt
+//   categoryId  String?
+
+//   @@unique([id, slug])
+// }
+
+// model Shopping {
+//   id          String       @id @default(uuid())
+//   title       String
+//   address     String
+//   localGovt   String
+//   description String
+//   imageUrls   String[]
+//   slug        String       @unique
+//   type        ShoppingType
+//   category    CategoryType
+//   user        User         @relation(fields: [userId], references: [id])
+//   userId      String
+//   createdAt   DateTime     @default(now())
+//   updatedAt   DateTime     @updatedAt
+//   categoryId  String?
+
+//   @@unique([id, slug])
+// }
+
+// model Nightlife {
+//   id          String        @id @default(uuid())
+//   title       String
+//   address     String
+//   localGovt   String
+//   description String
+//   imageUrls   String[]
+//   slug        String        @unique
+//   type        NightlifeType
+//   category    CategoryType
+//   user        User          @relation(fields: [userId], references: [id])
+//   userId      String
+//   createdAt   DateTime      @default(now())
+//   updatedAt   DateTime      @updatedAt
+//   categoryId  String?
+
+//   @@unique([id, slug])
+// }
+
+// model Event {
+//   id          String       @id @default(uuid())
+//   title       String
+//   address     String
+//   localGovt   String
+//   description String
+//   date        String
+//   imageUrls   String[]
+//   slug        String       @unique
+//   category    CategoryType
+//   user        User         @relation(fields: [userId], references: [id])
+//   userId      String
+//   createdAt   DateTime     @default(now())
+//   updatedAt   DateTime     @updatedAt
+//   categoryId  String?
+
+//   @@unique([id, slug])
+// }
+
+// model Food_Drink {
+//   id          String       @id @default(uuid())
+//   title       String
+//   address     String
+//   localGovt   String
+//   description String
+//   imageUrls   String[]
+//   slug        String       @unique
+//   category    CategoryType
+//   user        User         @relation(fields: [userId], references: [id])
+//   userId      String
+//   createdAt   DateTime     @default(now())
+//   updatedAt   DateTime     @updatedAt
+//   categoryId  String?
+
+//   @@unique([id, slug])
+// }
+
+// enum AccommodationType {
+//   AIRBNB
+//   APARTMENT
+//   HOTEL
+//   RESORT
+// }
+
+// enum ShoppingType {
+//   MALL
+//   MARKET
+// }
+
+// enum NightlifeType {
+//   CLUB
+//   LOUNGE
+//   BARS_CAFE
+// }
+
+// enum CategoryType {
+//   ACCOMMODATION
+//   EVENT
+//   FOOD_DRINK
+//   NIGHTLIFE
+//   SHOPPING
+//   TOURISM
+// }
+
+// // enum EventMonthType {
+// //   January
+// //   February
+// //   March
+// //   April
+// //   May
+// //   June
+// //   July
+// //   August
+// //   September
+// //   October
+// //   November
+// //   December
+// // }

@@ -1,6 +1,6 @@
 import React from "react";
 import ApartmentHero from "@/components/where-to-stay/apartment/ApartmentHero";
-import AllApartmentServer from "@/components/where-to-stay/apartment/ApartmentsServer";
+import AllApartments from "@/components/where-to-stay/apartment/AllApartments";
 
 const Page = async () => {
   return (
@@ -12,7 +12,7 @@ const Page = async () => {
         imageUrl={""}
         link={""}
       />
-      <AllApartmentServer />
+      <AllApartments />
     </div>
   );
 };

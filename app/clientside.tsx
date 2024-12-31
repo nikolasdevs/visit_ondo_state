@@ -11,7 +11,7 @@ import { useAutoplay } from "@/components/embla/emblaCarouselAutoplay";
 import {
   NextButton,
   PrevButton,
-  usePrevNextButtons,
+  usePrevNextButtons, 
 } from "@/components/embla/ArrowBtns";
 import { Pause, Play } from "lucide-react";
 

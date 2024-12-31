@@ -7,7 +7,6 @@ import { ArrowLeft, ArrowRight, Menu, X } from "lucide-react";
 import * as React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-// import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@radix-ui/react-navigation-menu";
 import { Button } from "@radix-ui/themes";
 import {
   NavigationMenu,
@@ -142,10 +141,10 @@ export function Header() {
                     </Link>
 
                     <Link
-                      href="/where-to-stay/motels"
+                      href="/where-to-stay/airbnb"
                       className="hover:text-accent transition"
                     >
-                      Motel
+                      Airbnb
                     </Link>
 
                     <Link
@@ -156,10 +155,10 @@ export function Header() {
                     </Link>
 
                     <Link
-                      href="/where-to-stay/hostel"
+                      href="/where-to-stay/resorts"
                       className="hover:text-accent transition"
                     >
-                      Hostel
+                      Resort
                     </Link>
                   </div>
                   {/* Image and Description */}

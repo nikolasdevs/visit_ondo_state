@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import Img1 from "@/public/Img3.jpg";
 import Img2 from "@/public/Img4.jpg";
 import Img3 from "@/public/nature-8.jpg";
@@ -15,9 +14,13 @@ import useEmblaCarousel from "embla-carousel-react";
 import "../../embla/emblaHotel.css";
 import { ArrowRight } from "lucide-react";
 import { DotButton, useDotButton } from "@/components/embla/DotBtn";
-import { NextButton, PrevButton, usePrevNextButtons } from "@/components/embla/ArrowBtns";
+import {
+  NextButton,
+  PrevButton,
+  usePrevNextButtons,
+} from "@/components/embla/ArrowBtns";
 
-interface AirBnBSlides {
+interface HotelSlides {
   id: number;
   title: string;
   description: string;
@@ -25,7 +28,7 @@ interface AirBnBSlides {
   link: string;
 }
 
-const airbnbslides: AirBnBSlides[] = [
+const hotelslides: HotelSlides[] = [
   {
     id: 1,
     title: "Noteworthy technology acquisitions 2021",
@@ -76,7 +79,7 @@ const airbnbslides: AirBnBSlides[] = [
   },
 ];
 
-const AirBnBsHero: React.FC<AirBnBSlides> = (props) => {
+const AirbnbHero: React.FC<HotelSlides> = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel();
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -94,7 +97,7 @@ const AirBnBsHero: React.FC<AirBnBSlides> = (props) => {
       <div className="embla h-screen relative overflow-hidden">
         <div className="embla_viewport" ref={emblaRef}>
           <div className="embla_container flex">
-            {airbnbslides.map((card) => (
+            {hotelslides.map((card) => (
               <div
                 key={card.id}
                 className="embla_slide flex-[0_0_100%] overflow-hidden relative "
@@ -159,4 +162,4 @@ const AirBnBsHero: React.FC<AirBnBSlides> = (props) => {
   );
 };
 
-export default AirBnBsHero;
+export default AirbnbHero;
